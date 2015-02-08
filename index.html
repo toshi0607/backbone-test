@@ -24,17 +24,24 @@ Book = Backbone.Model.extend({
 // var myBook = new Book();
 // console.log(myBook.get('name'));
 
- var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
-// console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
+var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
+// // console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
 
-thisBook.set('name', 'Beginning B.js');
-thisBook.set('year', '2013');
-console.log(thisBook.attributes);
-var hasYear = thisBook.has('year');
-console.log('Has an attribute called year :' + hasYear);
-thisBook.unset('year')
-var hasYear = thisBook.has('year');
-console.log('Has an attribute called year :' + hasYear);
+// thisBook.set('name', 'Beginning B.js');
+// thisBook.set('year', '2013');
+// console.log(thisBook.attributes);
+// var hasYear = thisBook.has('year');
+// console.log('Has an attribute called year :' + hasYear);
+// thisBook.unset('year')
+// var hasYear = thisBook.has('year');
+// console.log('Has an attribute called year :' + hasYear);
+
+// var newBook = new Book({ name:'Author Book', author: 'You' });
+// newBook.clear();
+// console.log('Has an attribute called year :' + newBook.has('name'));
+
+var cloneBook = thisBook.clone();
+console.log(cloneBook.attributes);
 
 </script>
 
