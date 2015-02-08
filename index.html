@@ -5,15 +5,24 @@
   <title>My App</title>
 </html>
 <body>
-  
-
-<script src="js/external/jquery1.11.2.js"></script>
+<p>テスト</p>
+<script src="js/external/jquery-1.11.2.js"></script>
 <script src="js/external/underscore.js"></script>
 <script src="js/external/backbone.js"></script>
 
 <script>
-  //backbone 
-  //
+Book = Backbone.Model.extend({
+  initialize: function(){
+    console.log('a new book');
+  },
+  defaults: {
+    name: 'Book Title',
+    author: 'No One'
+  }
+});
+
+var myBook = new Book();
+console.log(myBook.get('name'));
 </script>
 
 </body>
