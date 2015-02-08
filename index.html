@@ -21,8 +21,21 @@ Book = Backbone.Model.extend({
   }
 });
 
-var myBook = new Book();
-console.log(myBook.get('name'));
+// var myBook = new Book();
+// console.log(myBook.get('name'));
+
+ var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
+// console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
+
+thisBook.set('name', 'Beginning B.js');
+thisBook.set('year', '2013');
+console.log(thisBook.attributes);
+var hasYear = thisBook.has('year');
+console.log('Has an attribute called year :' + hasYear);
+thisBook.unset('year')
+var hasYear = thisBook.has('year');
+console.log('Has an attribute called year :' + hasYear);
+
 </script>
 
 </body>
