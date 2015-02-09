@@ -35,6 +35,14 @@ Book = Backbone.Model.extend({
   },
   printDetails: function(){
     console.log(this.get('name') + ' by ' + this.get('author'));
+  },
+  validate: function(attrs){
+    if(attrs.year < 2000){
+      return 'Year must be after 2000';
+    }
+    if(!attrs.name){
+      return 'A name must be provided';
+    }
   }
 });
 
@@ -43,10 +51,13 @@ Book = Backbone.Model.extend({
 
 var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
 thisBook.printDetails();
+console.log('Check year change: ' + thisBook.get('year'));
+thisBook.unset('name', {validate: true});
+console.log('Check if name was removed: ' + thisBook.get('name'));
 // // console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
 
-thisBook.set('name', 'Beginning B.js');
-// thisBook.set('year', '2013');
+// thisBook.set('name', 'Beginning B.js');
+thisBook.set('year', '2013', {validate: true});
 // console.log(thisBook.attributes);
 // var hasYear = thisBook.has('year');
 // console.log('Has an attribute called year :' + hasYear);
