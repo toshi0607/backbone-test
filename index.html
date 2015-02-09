@@ -16,7 +16,10 @@ Book = Backbone.Model.extend({
     this.on('change', function(){
       console.log('Changed attributes :' + JSON.stringify(this.changed));
       console.log('The name was changed from :' + this.previous('name') + ' to ' + this.get('name'));
-    })
+    });
+    this.on('invalid', function(model, error){
+      console.log('**Validation Error :' + error + '**');
+    });
 
     this.on('change', function(){
       console.log('Model Chabge Detected');
@@ -58,6 +61,9 @@ console.log('Check if name was removed: ' + thisBook.get('name'));
 
 // thisBook.set('name', 'Beginning B.js');
 thisBook.set('year', '2013', {validate: true});
+console.log('Is model valid: ' + thisBook.isValid());
+thisBook.set('year', 1998);
+console.log('Is model valid: ' + thisBook.isValid());
 // console.log(thisBook.attributes);
 // var hasYear = thisBook.has('year');
 // console.log('Has an attribute called year :' + hasYear);
