@@ -14,7 +14,13 @@
 Book = Backbone.Model.extend({
   initialize: function(){
     this.on('change', function(){
-      console.log('Model Changes Detected');
+      console.log('Model Chabge Detected');
+      if(this.hasChanged('name')){
+        console.log('The name has changed');
+      }
+      if(this.hasChanged('year')){
+        console.log('The year has changed');
+      }      
     }
       )
   },
