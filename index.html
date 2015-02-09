@@ -13,11 +13,17 @@
 <script>
 Book = Backbone.Model.extend({
   initialize: function(){
-    console.log('a new book');
+    this.on('change', function(){
+      console.log('Model Changes Detected');
+    }
+      )
   },
   defaults: {
     name: 'Book Title',
     author: 'No One'
+  },
+  printDetails: function(){
+    console.log(this.get('name') + ' by ' + this.get('author'));
   }
 });
 
@@ -25,9 +31,10 @@ Book = Backbone.Model.extend({
 // console.log(myBook.get('name'));
 
 var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
+thisBook.printDetails();
 // // console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
 
-// thisBook.set('name', 'Beginning B.js');
+thisBook.set('name', 'Beginning B.js');
 // thisBook.set('year', '2013');
 // console.log(thisBook.attributes);
 // var hasYear = thisBook.has('year');
@@ -40,8 +47,8 @@ var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
 // newBook.clear();
 // console.log('Has an attribute called year :' + newBook.has('name'));
 
-var cloneBook = thisBook.clone();
-console.log(cloneBook.attributes);
+// var cloneBook = thisBook.clone();
+// console.log(cloneBook.attributes);
 
 </script>
 
