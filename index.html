@@ -70,6 +70,18 @@ var bookTwo = new Book({name: 'B', author: 'Me', year: 2012});
 var myLibrary = new Library([bookOne, bookTwo]);
 console.log('Library contains ' + myLibrary.length + ' books');
 
+var bookThree = new Book({name: 'C', author: 'He', year: 2011});
+
+myLibrary.add(bookThree);
+console.log('Library contains ' + myLibrary.length + ' books');
+
+var bookFour = new Book({name: 'D', author: 'She', year: 2010});
+var bookFive = new Book({name: 'E', author: 'You2', year: 2009});
+
+myLibrary.add([bookFour, bookFive]);
+console.log('Library contains ' + myLibrary.length + ' books');
+
+console.log(myLibrary.attributes)
 
 </script>
 
