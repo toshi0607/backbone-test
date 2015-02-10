@@ -49,34 +49,27 @@ Book = Backbone.Model.extend({
   }
 });
 
-// var myBook = new Book();
-// console.log(myBook.get('name'));
 
-var thisBook = new Book({ name:'Beginning Backbone', author: 'James Serge' });
-thisBook.printDetails();
-console.log('Check year change: ' + thisBook.get('year'));
-thisBook.unset('name', {validate: true});
-console.log('Check if name was removed: ' + thisBook.get('name'));
-// // console.log(thisBook.get('name') + ' by ' + thisBook.get('author'));
 
-// thisBook.set('name', 'Beginning B.js');
-thisBook.set('year', '2013', {validate: true});
-console.log('Is model valid: ' + thisBook.isValid());
-thisBook.set('year', 1998);
-console.log('Is model valid: ' + thisBook.isValid());
-// console.log(thisBook.attributes);
-// var hasYear = thisBook.has('year');
-// console.log('Has an attribute called year :' + hasYear);
-// thisBook.unset('year')
-// var hasYear = thisBook.has('year');
-// console.log('Has an attribute called year :' + hasYear);
+// 以下変更
+Book = Backbone.Model.extend({
+  urlRoot: 'http://localhost:8080/books/'
+})
 
-// var newBook = new Book({ name:'Author Book', author: 'You' });
-// newBook.clear();
-// console.log('Has an attribute called year :' + newBook.has('name'));
+var Library = Backbone.Collection.extend({model:Book,
+  initialize: function(){
+    console.log('Creating a new library collection')
+  }
+});
 
-// var cloneBook = thisBook.clone();
-// console.log(cloneBook.attributes);
+var myLibrary = new Library();
+
+var bookOne = new Book({name: 'A', author: 'You', year: 2013});
+var bookTwo = new Book({name: 'B', author: 'Me', year: 2012});
+
+var myLibrary = new Library([bookOne, bookTwo]);
+console.log('Library contains ' + myLibrary.length + ' books');
+
 
 </script>
 
