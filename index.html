@@ -66,35 +66,40 @@ var Library = Backbone.Collection.extend({model:Book,
 
 var myLibrary = new Library();
 
-var bookOne = new Book({name: 'A', author: 'You', year: 2013});
-var bookTwo = new Book({name: 'B', author: 'Me', year: 2012});
+var bookOne = new Book({name: 'A', author: 'You1', year: 2013});
+var bookTwo = new Book({name: 'B', author: 'You2', year: 2012});
 
 var myLibrary = new Library([bookOne, bookTwo]);
 console.log('Library contains ' + myLibrary.length + ' books');
 
-var bookThree = new Book({name: 'C', author: 'He', year: 2011});
+var bookThree = new Book({name: 'C', author: 'You3', year: 2011});
 
 myLibrary.add(bookThree);
 console.log('Library contains ' + myLibrary.length + ' books');
 
-var bookFour = new Book({name: 'D', author: 'She', year: 2010});
-var bookFive = new Book({name: 'E', author: 'You2', year: 2009});
+var bookFour = new Book({name: 'D', author: 'You4', year: 2010});
+var bookFive = new Book({name: 'E', author: 'You5', year: 2009});
 
 myLibrary.add([bookFour, bookFive]);
 console.log('Library contains ' + myLibrary.length + ' books');
 
-var bookSix = new Book({name: 'F', author: 'You3', year: 2008}); 
+var bookSix = new Book({name: 'F', author: 'You6', year: 2008}); 
 myLibrary.push(bookSix);
 console.log('Library contains ' + myLibrary.length + ' books');
 
 myLibrary.remove(bookFive);
 console.log('Library contains ' + myLibrary.length + ' books');
 
-myLibrary.remove([bookFour, bookThree]);
+// myLibrary.remove([bookFour, bookThree]);
+// console.log('Library contains ' + myLibrary.length + ' books');
+
+// myLibrary.reset();
+// console.log('Library contains ' + myLibrary.length + ' books');
+
+myLibrary.set([bookTwo], {remove: false});
 console.log('Library contains ' + myLibrary.length + ' books');
 
-var lastModel = myLibrary.pop();
-var lastModel = myLibrary.shift();
+console.log(myLibrary.toJSON());
 
 </script>
 
